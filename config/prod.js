@@ -1,5 +1,5 @@
 const { model } = require("mongoose");
 
-module.export = {
+module.exports = {
     mongoURI: process.env.MONGO_URI
 }

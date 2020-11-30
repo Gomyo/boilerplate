@@ -14,3 +14,11 @@ sudo apt-get install -y build-essential
 ```
 npm install express --save
 ```
+
+- error code ELIFECYCLE 이슈 해결
+https://stackoverflow.com/questions/42308879/how-to-solve-npm-error-npm-err-code-elifecycle
+
+#### mongoose Install
+```
+npm install mongoose --save
+```

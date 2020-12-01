@@ -10,10 +10,11 @@ pw : abcd1234
 [링크](https://velog.io/@velopert/eslint-and-prettier-in-react)를 보고 적용했다.
 협업을 위해서는 필수이니 미리 미리 익숙해지기 위해서 O.O
 
-CRA v2로 구성한 프로젝트가 아니기 때문에 아래의 명령어를 사용해 한번에 설치했다.
-```
-npx install-peerdeps --dev eslint-config-airbnb
-```
+[StackOverFlow](https://stackoverflow.com/questions/46013544/yarn-install-command-error-no-such-file-or-directory-install)
+이 게시글을 보고 yarn 에러를 해결했다. 꽤나 오래 걸렸다..
+
+# Node Js 시작
+
 #### Node JS Install
 $ apt install nodejs doesn't work, so I entered the code below...
 ```
@@ -71,6 +72,8 @@ npm install cookie-parser --save
 ```
 
 #### login 기능 구현 에러
+
+index.js에서 
 ```
 userSchema.methods.comparePassword = function(plainPassword, cb) {
     
@@ -86,3 +89,18 @@ ES5는 3항 연산자 return 문 처리가 가능한가? 흠 파이썬같네 하
 세미콜론으로 해야 정상적으로 동작함.
 
 #### Auth 기능 만들기
+완료
+
+# react 시작
+
+#### create react app
+```
+npx create-react-app .
+```
+.를 붙이는 것에 주의하자.
+
+#### 리액트 설치 과정에 No receipt for 'com.apple.pkg.~~' 에러
+```
+$ xcode-select --install 만약 안되면
+$ sudo rm -rf $(xcode-select -print-path)로 삭제한 뒤 설치한다.
+

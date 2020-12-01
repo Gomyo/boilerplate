@@ -6,12 +6,19 @@
 cluster : basic
 pw : abcd1234
 
-- Coding Convention
+- Coding Convention (적용 실패)
 [링크](https://velog.io/@velopert/eslint-and-prettier-in-react)를 보고 적용했다.
 협업을 위해서는 필수이니 미리 미리 익숙해지기 위해서 O.O
 
 [StackOverFlow](https://stackoverflow.com/questions/46013544/yarn-install-command-error-no-such-file-or-directory-install)
 이 게시글을 보고 yarn 에러를 해결했다. 꽤나 오래 걸렸다..
+
+CRA v2가 아니기 때문에 아래의 명령어를 입력해 eslint에 필요한 패키지를 설치했다.
+```
+npx install-peerdeps --dev eslint-config-airbnb
+```
+yarn 깔고 eslint 버전 텍스트 수정해보고 했지만 자꾸 에러가 떠서 우선은 실습을 진행하기로 했다.
+나중에 싹 다 밀고 깔끔하게 해보는걸로.
 
 # Node Js 시작
 
@@ -104,3 +111,6 @@ npx create-react-app .
 $ xcode-select --install 만약 안되면
 $ sudo rm -rf $(xcode-select -print-path)로 삭제한 뒤 설치한다.
 
+#### react-router-dom install
+
+#### axios install

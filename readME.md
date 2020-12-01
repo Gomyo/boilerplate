@@ -1,5 +1,5 @@
 # 진행기간
-2020.11.30 ~ 
+2020.11.30 ~
 
 # 구성요소
 - mongoDB
@@ -80,10 +80,10 @@ npm install cookie-parser --save
 
 #### login 기능 구현 에러
 
-index.js에서 
+index.js에서
 ```
 userSchema.methods.comparePassword = function(plainPassword, cb) {
-    
+
     // plainPassword 1234567 DB : $2b$10$RE8oTRI/Jgi1NCIaJfIFBOYSV0N.JG3oM.vqjYo0T2/2UoG79HR3m
     bcrypt.compare(plainPassword, this.password, function(err, isMatch) {
         if (err) return cb(err);
@@ -91,7 +91,7 @@ userSchema.methods.comparePassword = function(plainPassword, cb) {
     })
 }
 ```
-위 부분에서 if 부분에 return cb(err) 뒤에 ,를 붙이라고 설명이 되어 있어서 
+위 부분에서 if 부분에 return cb(err) 뒤에 ,를 붙이라고 설명이 되어 있어서
 ES5는 3항 연산자 return 문 처리가 가능한가? 흠 파이썬같네 하고 넘겼는데 저 부분이 문제였다.
 세미콜론으로 해야 정상적으로 동작함.
 
@@ -110,7 +110,52 @@ npx create-react-app .
 ```
 $ xcode-select --install 만약 안되면
 $ sudo rm -rf $(xcode-select -print-path)로 삭제한 뒤 설치한다.
+```
 
 #### react-router-dom install
 
 #### axios install
+
+## Directory Refactoring
+폴더를 server와 client로 정리한다 (BE, FE로 나누어서 관리)
+이 과정에 package.json의 scripts에서 경로를 적절히 설정해 줘야 한다.
+
+#### proxy server 사용 이유
+1. 회사에서 직원들이나 집안에서 아이들 인터넷 사용 제어
+2. 캐쉬를 이용해 더 빠른 인터넷 체감속도
+3. 더 나은 보안 제공 (IP 바꾸기)
+4. 이용 제한된 사이트 접근 가능
+
+#### concurrently로 FE, BE 서버 동시에 켜기
+```
+npm install concurrently --save
+```
+설치 후, 순차적으로 켜기 위해 script를 만든다.
+```
+"concurrently \"npm run backend\" \"npm run start --prefix client\""
+```
+이렇게 동시에 켤 수 있게 된다. 잘 된다.
+
+#### ant design install
+```
+npm install antd
+```
+
+#### redux install
+```
+npm install redux react-redux redux-promise redux-thunk --save
+```
+
+#### redux devTools (Chrome Extentsion) install
+내 어플리케이션에 적용하기 위해 src/index.js에 따로 작업했음
+
+#### event.preventDefault();
+새로고침을 방지해서 해야 하는 작업을 하도록 한다. (정확히 무엇을 위함인지는 모르겠음)
+
+#### 들어갈 수 있는 페이지에 대한 통제는 HOC (Higher Order Component)
+```
+const EnhancedComponent =
+higherOrderComponent(WrappedComponent);
+```
+
+LandingPage를 Auth 컴포넌트로 감싸줌.

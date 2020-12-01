@@ -28,7 +28,7 @@ app.get('/api/hello', (req, res) => {
 })
 
 app.post('/api/users/register', (req, res) => {
-	
+
 	// When client transport information while registering,
 	// put them into DB.
 	const user = new User(req.body)
@@ -70,6 +70,7 @@ app.post('/api/users/login', (req, res) => {
 })
 
 // auth라는 미들웨어를 추가. 콜백 펑션을 받은 다음에 중간에서 처리를 해줌.
+// role = 0이면 일반유저, 아니면 관리자
 app.get('/api/users/auth', auth, (req, res) => {
 	// 여기까지 미들웨어를 통과해 왔다면 authentication이 성공적으로 완료되었다는 것
 	res.status(200).json({
@@ -85,7 +86,7 @@ app.get('/api/users/auth', auth, (req, res) => {
 })
 
 app.get('/api/users/logout', auth, (req, res) => {
-	
+
 	User.findOneAndUpdate(
 		{ _id: req.user._id },
 		{ token: "" }

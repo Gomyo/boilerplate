@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const config = require('./config/key');
 
 const { User } = require('./models/User');
-
+const { auth } = require('./middleware/auth');
 //application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 	res.send('Nodemon installed!')
 })
 
-app.post('/register', (req, res) => {
+app.post('/api/users/register', (req, res) => {
 	
 	// When client transport information while registering,
 	// put them into DB.
@@ -37,7 +37,7 @@ app.post('/register', (req, res) => {
 	})
 })
 
-app.post('/login', (req, res) => {
+app.post('/api/users/login', (req, res) => {
 	// Find requested email in DB
 	User.findOne({ email: req.body.email }, (err, user) => {
 
@@ -64,6 +64,35 @@ app.post('/login', (req, res) => {
 		})
 	})
 })
+
+// auth라는 미들웨어를 추가. 콜백 펑션을 받은 다음에 중간에서 처리를 해줌.
+app.get('/api/users/auth', auth, (req, res) => {
+	// 여기까지 미들웨어를 통과해 왔다면 authentication이 성공적으로 완료되었다는 것
+	res.status(200).json({
+		_id: req.user._id,
+		isAdmin: req.user.role === 0 ? false : true,
+		isAuth: true,
+		email: req.user.email,
+		name: req.user.name,
+		lastname: req.user.lastname,
+		role: req.user.role,
+		image: req.user.image
+	})
+})
+
+app.get('/api/users/logout', auth, (req, res) => {
+	
+	User.findOneAndUpdate(
+		{ _id: req.user._id },
+		{ token: "" }
+		, (err, user) => {
+			if(err) return res.json({ success: false, err});
+			return res.status(200).send({
+				success: true
+			})
+		})
+})
+	
 
 app.listen(port, () => {
 	console.log(`Example app listening at http://localhost:${port}`)

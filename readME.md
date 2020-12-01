@@ -6,6 +6,14 @@
 cluster : basic
 pw : abcd1234
 
+- Coding Convention
+[링크](https://velog.io/@velopert/eslint-and-prettier-in-react)를 보고 적용했다.
+협업을 위해서는 필수이니 미리 미리 익숙해지기 위해서 O.O
+
+CRA v2로 구성한 프로젝트가 아니기 때문에 아래의 명령어를 사용해 한번에 설치했다.
+```
+npx install-peerdeps --dev eslint-config-airbnb
+```
 #### Node JS Install
 $ apt install nodejs doesn't work, so I entered the code below...
 ```
@@ -74,5 +82,7 @@ userSchema.methods.comparePassword = function(plainPassword, cb) {
 }
 ```
 위 부분에서 if 부분에 return cb(err) 뒤에 ,를 붙이라고 설명이 되어 있어서 
-ES5는 3항 연산자와 같이 return 문 처리가 가능한가? 흠 파이썬같네 하고 넘겼는데 저 부분이 문제였다.
-세미콜론 맞음
+ES5는 3항 연산자 return 문 처리가 가능한가? 흠 파이썬같네 하고 넘겼는데 저 부분이 문제였다.
+세미콜론으로 해야 정상적으로 동작함.
+
+#### Auth 기능 만들기

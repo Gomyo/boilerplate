@@ -1,7 +1,7 @@
 const { User } = require("../models/User");
 
 
-let auth = (req, rs, next) => {
+let auth = (req, res, next) => {
 	// Authentication process
 
 	// get token from client's cookie
@@ -10,7 +10,7 @@ let auth = (req, rs, next) => {
 	// decode token and find user
 	User.findByToken(token, (err, user) => {
 		if(err) throw err;
-		if(!user) return resizeBy.json({ isAuth: false, error: true })
+		if(!user) return res.json({ isAuth: false, error: true })
 
 		// 여기서 req에 token, user 정보를 넘겨 주는 이유는
 		// app router에서 사용할 수 있도록 하기 위함

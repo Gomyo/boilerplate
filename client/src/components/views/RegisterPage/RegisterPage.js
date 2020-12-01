@@ -86,7 +86,7 @@ function RegisterPage(props) {
 
           <br />
 
-          <button>Register</button>
+          <button type="submit">Register</button>
         </form>
       </div>
     );

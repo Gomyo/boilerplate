@@ -32,8 +32,7 @@ export function registerUser(dataToSubmit) {
 export function auth() {
 
 	// get method이기 때문에 body 부분은 필요가 없음(dataToSubmit)
-	const request = axios
-	.get('/api/users/auth')
+	const request = axios.get('/api/users/auth')
     .then((response) =>  response.data)
 
 	return {

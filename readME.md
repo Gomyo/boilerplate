@@ -1,3 +1,6 @@
+# 진행기간
+2020.11.30 ~ 
+
 # 구성요소
 - mongoDB
 cluster : basic
@@ -58,3 +61,18 @@ npm install jsonwebtoken --save
 ```
 npm install cookie-parser --save
 ```
+
+#### login 기능 구현 에러
+```
+userSchema.methods.comparePassword = function(plainPassword, cb) {
+    
+    // plainPassword 1234567 DB : $2b$10$RE8oTRI/Jgi1NCIaJfIFBOYSV0N.JG3oM.vqjYo0T2/2UoG79HR3m
+    bcrypt.compare(plainPassword, this.password, function(err, isMatch) {
+        if (err) return cb(err);
+        cb(null, isMatch)
+    })
+}
+```
+위 부분에서 if 부분에 return cb(err) 뒤에 ,를 붙이라고 설명이 되어 있어서 
+ES5는 3항 연산자와 같이 return 문 처리가 가능한가? 흠 파이썬같네 하고 넘겼는데 저 부분이 문제였다.
+세미콜론 맞음

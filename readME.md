@@ -1,3 +1,8 @@
+# 구성요소
+- mongoDB
+cluster : basic
+pw : abcd1234
+
 #### Node JS Install
 $ apt install nodejs doesn't work, so I entered the code below...
 ```
@@ -40,4 +45,16 @@ dev.js에 있는 정보들을 export해서 사용하고, ignore한다.
 #### 정보 암호화 (Bycrypt)
 ```
 npm install bcrypt --save
+```
+이 단계에서 에러가 났었다. 예전에 만들어둔 클러스터로 진행을 하려니 11000 mongoDB error가 뜬 것...
+클러스터를 새로 파니까 해결되었다.
+
+#### json web token 생성
+```
+npm install jsonwebtoken --save
+```
+
+#### cookie-parser 설치
+```
+npm install cookie-parser --save
 ```

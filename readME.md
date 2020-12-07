@@ -6,7 +6,7 @@
 cluster : basic
 pw : abcd1234
 
-- Coding Convention (적용 실패)
+- Coding Convention
 [링크](https://velog.io/@velopert/eslint-and-prettier-in-react)를 보고 적용했다.
 협업을 위해서는 필수이니 미리 미리 익숙해지기 위해서 O.O
 
